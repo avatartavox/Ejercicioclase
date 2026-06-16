@@ -98,9 +98,7 @@ export function CategoriesSection() {
               id="categories-heading"
               className="font-['Albert_Sans',sans-serif] font-bold text-black"
               style={{ fontSize: "clamp(32px, 3.3vw, 48px)", lineHeight: "45px" }}
-            >
-              Find Courses That Fit Your Passion
-            </h2>
+            >Estos son los programas que tenemos para ti</h2>
           </div>
 
           {/* Category list */}

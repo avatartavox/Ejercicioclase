@@ -95,19 +95,12 @@ export function HeroSection() {
           aria-label="Learn New Skills. Advance Your Career. Anytime Anywhere"
         >
           <div aria-hidden="true" style={{ lineHeight: "clamp(29px, 4.8vw, 69.3px)" }}>
-            <p style={{ minHeight: "1em" }}>
-              {line0}
-              <Cursor show={cursorLine === 0 && !isDone} />
-            </p>
+            <p style={{ minHeight: "1em" }}>{line0}<Cursor show={cursorLine === 0 && !isDone} /></p>
             <p style={{ minHeight: "1em" }}>
               {line1}
               <Cursor show={cursorLine === 1 && !isDone} />
             </p>
-            <p style={{ minHeight: "1em" }}>
-              {line2White}
-              <span className="text-[#80f6b3]">{line2Green}</span>
-              <Cursor show={cursorLine === 2 && !isDone} />
-            </p>
+            <p style={{ minHeight: "1em" }}>{line2White}<span className="text-[#80f6b3]">{line2Green}</span><Cursor show={cursorLine === 2 && !isDone} /></p>
             <p className="text-[#80f6b3]" style={{ minHeight: "1em" }}>
               {line3}
               <Cursor show={cursorLine === 3 && !isDone} />
