@@ -113,9 +113,7 @@ export function CategoriesSection() {
             className="bg-[#75f5aa] text-black font-['Albert_Sans',sans-serif] font-medium rounded-[10px] px-5 py-[10px] hover:bg-[#5de89b] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#3dcc7e] cursor-pointer"
             style={{ fontSize: "20px" }}
             aria-label="View all course categories"
-          >
-            All Categories
-          </button>
+          >Ver todas las Categorias</button>
         </div>
       </div>
 
