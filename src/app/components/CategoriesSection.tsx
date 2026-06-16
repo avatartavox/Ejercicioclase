@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router";
+import * as THREE from "three";
+// @ts-ignore
+import NET from "vanta/dist/vanta.net.min";
 import imgPhoto1 from "../../imports/Desktop1/78f8ec8b80dc4c4b994edacb5f25c5eb68545fa7.png";
 import imgPhoto2 from "../../imports/Desktop1/ff79da098784c5cdbb576d0c21e394fc3ae706b1.png";
 import imgPhoto3 from "../../imports/Desktop1/23f8a951897b494053d81205074981b6a5f9c57e.png";
@@ -61,6 +65,8 @@ function FloatingImage({ src, alt, width, height, parallaxOffset, className }: F
 
 export function CategoriesSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const vantaRef = useRef<HTMLDivElement>(null);
+  const vantaEffect = useRef<ReturnType<typeof NET> | null>(null);
   const [scrollOffset, setScrollOffset] = useState(0);
 
   useEffect(() => {
@@ -75,6 +81,24 @@ export function CategoriesSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!vantaRef.current || vantaEffect.current) return;
+    vantaEffect.current = NET({
+      el: vantaRef.current,
+      THREE,
+      color: 0x75f5aa,
+      backgroundColor: 0xffffff,
+      points: 10,
+      maxDistance: 22,
+      spacing: 18,
+      showDots: true,
+    });
+    return () => {
+      vantaEffect.current?.destroy();
+      vantaEffect.current = null;
+    };
+  }, []);
+
   return (
     <section
       ref={sectionRef}
@@ -83,8 +107,11 @@ export function CategoriesSection() {
       aria-labelledby="categories-heading"
     >
       {/* Centered content column */}
-      <div className="flex flex-col items-center justify-center min-h-full py-16 lg:py-[167px] px-6">
-        <div className="flex flex-col items-center gap-[72px] w-full max-w-[410px] text-center">
+      <div
+        ref={vantaRef}
+        className="relative flex flex-col items-center justify-center min-h-full py-16 lg:py-[167px] px-6"
+      >
+        <div className="relative z-10 flex flex-col items-center gap-[72px] w-full max-w-[410px] text-center">
           {/* Header */}
           <div className="flex flex-col gap-6 w-full">
             <p
@@ -109,11 +136,12 @@ export function CategoriesSection() {
           </ul>
 
           {/* CTA Button */}
-          <button
-            className="bg-[#75f5aa] text-black font-['Albert_Sans',sans-serif] font-medium rounded-[10px] px-5 py-[10px] hover:bg-[#5de89b] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#3dcc7e] cursor-pointer"
+          <Link
+            to="/categories"
+            className="bg-[#75f5aa] text-black font-['Albert_Sans',sans-serif] font-medium rounded-[10px] px-5 py-[10px] hover:bg-[#5de89b] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#3dcc7e]"
             style={{ fontSize: "20px" }}
             aria-label="View all course categories"
-          >Ver todas las Categorias</button>
+          >Ver todas las Categorias</Link>
         </div>
       </div>
 

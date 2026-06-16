@@ -1,14 +1,6 @@
-import { HeroSection } from "./components/HeroSection";
-import { CategoriesSection } from "./components/CategoriesSection";
-import { TestimonialsSection } from "./components/TestimonialsSection";
+import { RouterProvider } from "react-router";
+import { router } from "./routes";
 
 export default function App() {
-  return (
-    <div className="w-full min-h-screen">
-      {/* MARKER-MAKE-KIT-INVOKED */}
-      <HeroSection />
-      <CategoriesSection />
-      <TestimonialsSection />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
