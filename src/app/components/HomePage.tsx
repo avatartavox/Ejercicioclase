@@ -3,6 +3,7 @@ import { CategoriesSection } from "./CategoriesSection";
 import { TestimonialsSection } from "./TestimonialsSection";
 import { OrbitSection } from "./OrbitSection";
 import RadialOrbitalTimeline from "./RadialOrbitalTimeline";
+import { CtaLottieSection } from "./CtaLottieSection";
 
 export function HomePage() {
   return (
@@ -12,6 +13,7 @@ export function HomePage() {
       <TestimonialsSection />
       <OrbitSection />
       <RadialOrbitalTimeline />
+      <CtaLottieSection />
     </div>
   );
 }

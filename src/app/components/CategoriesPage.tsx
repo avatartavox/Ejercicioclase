@@ -1,47 +1,5 @@
 import { Link } from "react-router";
-
-const allCategories = [
-  {
-    label: "Design & Creativity",
-    count: "639+",
-    subcategories: ["UI/UX Design", "Graphic Design", "Motion Graphics", "3D Modeling", "Illustration", "Typography"],
-  },
-  {
-    label: "Tech & Programming",
-    count: "261+",
-    subcategories: ["Web Development", "Mobile Apps", "Data Science", "Machine Learning", "DevOps", "Cybersecurity"],
-  },
-  {
-    label: "Business & Marketing",
-    count: "1,529+",
-    subcategories: ["Digital Marketing", "SEO", "Social Media", "Entrepreneurship", "Finance", "Sales"],
-  },
-  {
-    label: "Photography & Visual Arts",
-    count: "975+",
-    subcategories: ["Photography", "Video Editing", "Color Grading", "Documentary", "Portrait", "Product Photography"],
-  },
-  {
-    label: "Personal Development",
-    count: "820+",
-    subcategories: ["Productivity", "Leadership", "Communication", "Mindfulness", "Public Speaking", "Time Management"],
-  },
-  {
-    label: "Music & Audio",
-    count: "412+",
-    subcategories: ["Music Production", "Sound Design", "Mixing & Mastering", "Songwriting", "DJing", "Podcast"],
-  },
-  {
-    label: "Health & Wellness",
-    count: "340+",
-    subcategories: ["Fitness", "Nutrition", "Yoga", "Mental Health", "Meditation", "Sports"],
-  },
-  {
-    label: "Language & Communication",
-    count: "198+",
-    subcategories: ["English", "Spanish", "Portuguese", "French", "Writing", "Copywriting"],
-  },
-];
+import { categories } from "../data/categories";
 
 export function CategoriesPage() {
   return (
@@ -82,7 +40,7 @@ export function CategoriesPage() {
             style={{ fontSize: "18px" }}
           >
             Explora nuestra oferta completa de más de 5,000 programas en{" "}
-            {allCategories.length} categorías.
+            {categories.length} categorías.
           </p>
         </div>
       </section>
@@ -90,8 +48,41 @@ export function CategoriesPage() {
       {/* Categories grid */}
       <main className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allCategories.map((cat) => (
-            <CategoryCard key={cat.label} {...cat} />
+          {categories.map((cat) => (
+            <Link key={cat.slug} to={`/categories/${cat.slug}`} className="block group">
+              <article className="h-full border border-gray-100 rounded-2xl p-6 group-hover:border-[#75f5aa] group-hover:shadow-lg transition-all duration-200 cursor-pointer">
+                <div className="flex items-start justify-between mb-4">
+                  <h2
+                    className="font-['Albert_Sans',sans-serif] font-bold text-black"
+                    style={{ fontSize: "20px", lineHeight: "1.3" }}
+                  >
+                    {cat.label}
+                  </h2>
+                  <span
+                    className="shrink-0 ml-4 bg-[#75f5aa]/20 text-[#1a7a45] font-['Albert_Sans',sans-serif] font-semibold rounded-full px-3 py-1"
+                    style={{ fontSize: "13px" }}
+                  >
+                    {cat.count}
+                  </span>
+                </div>
+                <ul className="flex flex-col gap-2">
+                  {cat.subcategories.map((sub) => (
+                    <li key={sub} className="flex items-center gap-2">
+                      <span className="shrink-0 w-[5px] h-[5px] rounded-full bg-[#75f5aa]" aria-hidden="true" />
+                      <span
+                        className="font-['Albert_Sans',sans-serif] text-[#5f5f5f]"
+                        style={{ fontSize: "14px" }}
+                      >
+                        {sub}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 font-['Albert_Sans',sans-serif] text-[#75f5aa] font-medium text-sm group-hover:underline">
+                  Ver categoría →
+                </p>
+              </article>
+            </Link>
           ))}
         </div>
       </main>
@@ -120,47 +111,5 @@ export function CategoriesPage() {
         </div>
       </section>
     </div>
-  );
-}
-
-function CategoryCard({
-  label,
-  count,
-  subcategories,
-}: {
-  label: string;
-  count: string;
-  subcategories: string[];
-}) {
-  return (
-    <article className="group border border-gray-100 rounded-2xl p-6 hover:border-[#75f5aa] hover:shadow-lg transition-all duration-200 cursor-pointer">
-      <div className="flex items-start justify-between mb-4">
-        <h2
-          className="font-['Albert_Sans',sans-serif] font-bold text-black group-hover:text-black"
-          style={{ fontSize: "20px", lineHeight: "1.3" }}
-        >
-          {label}
-        </h2>
-        <span
-          className="shrink-0 ml-4 bg-[#75f5aa]/20 text-[#1a7a45] font-['Albert_Sans',sans-serif] font-semibold rounded-full px-3 py-1"
-          style={{ fontSize: "13px" }}
-        >
-          {count}
-        </span>
-      </div>
-      <ul className="flex flex-col gap-2">
-        {subcategories.map((sub) => (
-          <li key={sub} className="flex items-center gap-2">
-            <span className="shrink-0 w-[5px] h-[5px] rounded-full bg-[#75f5aa]" aria-hidden="true" />
-            <span
-              className="font-['Albert_Sans',sans-serif] text-[#5f5f5f]"
-              style={{ fontSize: "14px" }}
-            >
-              {sub}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </article>
   );
 }
