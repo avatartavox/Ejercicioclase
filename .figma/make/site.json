@@ -1,0 +1,11 @@
+{
+  "title": "Profe Landing",
+  "description": "Showcases a visually engaging website with a hero section, parallax category images, and a responsive testimonial carousel enhancing user experience and accessibility.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

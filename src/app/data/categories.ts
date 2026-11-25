@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// DATASET DE CATEGORÍAS v2
+// DATASET DE CATEGORÍAS
 // Edita este archivo para actualizar el contenido de cada categoría.
 // Cada objeto sigue la misma estructura — no cambies los nombres de las keys.
 // ─────────────────────────────────────────────────────────────────────────────

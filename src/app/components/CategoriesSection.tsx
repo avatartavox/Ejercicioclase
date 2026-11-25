@@ -8,6 +8,9 @@ import imgPhoto2 from "../../imports/Desktop1/ff79da098784c5cdbb576d0c21e394fc3a
 import imgPhoto3 from "../../imports/Desktop1/23f8a951897b494053d81205074981b6a5f9c57e.png";
 import imgPhoto4 from "../../imports/Desktop1/ee34a454eac226094f319f9bf81f8c3de117dedc.png";
 
+// Vanta NET still reads the removed THREE.VertexColors constant.
+const vantaThree = { ...THREE, VertexColors: true };
+
 const categories = [
   { label: "Design & Creativity", count: "639+" },
   { label: "Tech & Programming", count: "261+" },
@@ -85,7 +88,7 @@ export function CategoriesSection() {
     if (!vantaRef.current || vantaEffect.current) return;
     vantaEffect.current = NET({
       el: vantaRef.current,
-      THREE,
+      THREE: vantaThree,
       color: 0x75f5aa,
       backgroundColor: 0xffffff,
       points: 10,
