@@ -27,7 +27,7 @@ export function CategoriesPage() {
             className="font-['Albert_Sans',sans-serif] font-semibold text-[#5f5f5f] mb-4"
             style={{ fontSize: "14px", letterSpacing: "0.08em" }}
           >
-            //CATEGORIES
+            //CATEGORIAS
           </p>
           <h1
             className="font-['Albert_Sans',sans-serif] font-bold text-black mb-4"
@@ -48,7 +48,7 @@ export function CategoriesPage() {
       {/* Categories grid */}
       <main className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((cat) => (
+          {categories.map((cat, categoryIndex) => (
             <Link key={cat.slug} to={`/categories/${cat.slug}`} className="block group">
               <article className="h-full border border-gray-100 rounded-2xl p-6 group-hover:border-[#75f5aa] group-hover:shadow-lg transition-all duration-200 cursor-pointer">
                 <div className="flex items-start justify-between mb-4">
@@ -68,7 +68,12 @@ export function CategoriesPage() {
                 <ul className="flex flex-col gap-2">
                   {cat.subcategories.map((sub) => (
                     <li key={sub} className="flex items-center gap-2">
-                      <span className="shrink-0 w-[5px] h-[5px] rounded-full bg-[#75f5aa]" aria-hidden="true" />
+                      <span
+                        className={`shrink-0 w-[5px] h-[5px] rounded-full ${
+                          categoryIndex === 4 ? "bg-[#1a7a45]" : "bg-[#75f5aa]"
+                        }`}
+                        aria-hidden="true"
+                      />
                       <span
                         className="font-['Albert_Sans',sans-serif] text-[#5f5f5f]"
                         style={{ fontSize: "14px" }}
@@ -78,7 +83,11 @@ export function CategoriesPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 font-['Albert_Sans',sans-serif] text-[#75f5aa] font-medium text-sm group-hover:underline">
+                <p
+                  className={`mt-4 font-['Albert_Sans',sans-serif] font-medium text-sm group-hover:underline ${
+                    categoryIndex === 0 ? "text-[#1a7a45]" : "text-[#75f5aa]"
+                  }`}
+                >
                   Ver categoría →
                 </p>
               </article>
@@ -103,7 +112,7 @@ export function CategoriesPage() {
             Cuéntanos qué necesitas y lo añadimos a nuestra oferta.
           </p>
           <button
-            className="bg-[#75f5aa] text-black font-['Albert_Sans',sans-serif] font-medium rounded-[10px] px-6 py-3 hover:bg-[#5de89b] transition-colors cursor-pointer"
+            className="bg-[#ffb703] text-black font-['Albert_Sans',sans-serif] font-medium rounded-[10px] px-6 py-3 hover:bg-[#e5a500] transition-colors cursor-pointer"
             style={{ fontSize: "18px" }}
           >
             Sugerir un programa
